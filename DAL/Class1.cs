@@ -50,6 +50,23 @@ namespace DAL
 
     }
 
+
+
+    public class EmpDBInitializer : DropCreateDatabaseAlways<MyContext1>
+    {
+        protected override void Seed(MyContext1 context)
+        {
+            IList<DeptMaster> defaultStandards = new List<DeptMaster>();
+
+            defaultStandards.Add(new DeptMaster() { DeptCode=1,DeptName="IT" });
+            
+            
+            context.DeptTable.AddRange(defaultStandards);
+
+            base.Seed(context);
+        }
+    }
+
     public class MyContext1 : DbContext
     {
         public MyContext1() : base("MyContext1")
@@ -59,6 +76,7 @@ namespace DAL
             //drop create if model changes
 
             Database.SetInitializer<MyContext1>(new DropCreateDatabaseIfModelChanges<MyContext1>());
+            Database.SetInitializer(new EmpDBInitializer());
         }
 
         public virtual DbSet<EmpProfile> EmpTable { get; set; }

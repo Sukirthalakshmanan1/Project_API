@@ -23,12 +23,12 @@ namespace Project.Controllers
 
         // [Route("GetAllMarks")]
         [HttpGet]
-        public List<Emp> GetMarkList()
+        public List<Emp> GetEmployeeList()
         {
             //sub_mark --model
             //BLclass1
             List<BLClass1> empbal = new List<BLClass1>();
-            empbal = obj.GetAll();
+            empbal = obj.GetAllEmployeeDetails();
             List<Emp> emps = new List<Emp>();
             foreach (var item in empbal)
             {
@@ -45,11 +45,11 @@ namespace Project.Controllers
 
 
         // GET api/<controller>/5
-        // [Route("~/FindE/{id}")]
+       
         //  [Route("FindById/{id:int:min(1)}")]
 
         [Route("FindById/{id:int?}")]
-        public Emp GetMarkByID(int id)
+        public Emp GetEmployeeByID(int id)
         {
             BLClass1 empbal = new BLClass1();
             empbal = obj.search(id);
@@ -66,7 +66,7 @@ namespace Project.Controllers
         }
 
         // POST api/<controller>
-        public HttpResponseMessage PostMarks([FromBody] Emp empdata)
+        public HttpResponseMessage PostEmpDetails([FromBody] Emp empdata)
         {
             BLClass1 empbal = new BLClass1();
             empbal.EmpCode = empdata.EmpCode;
@@ -89,7 +89,7 @@ namespace Project.Controllers
         }
 
         // PUT api/<controller>/5
-        public HttpResponseMessage PutMarks([FromBody] Emp empdata)
+        public HttpResponseMessage PutEmpDetails([FromBody] Emp empdata)
         {
 
            BLClass1 empbal = new BLClass1();
@@ -100,7 +100,7 @@ namespace Project.Controllers
             empbal.DOB=empdata.DOB;
 
 
-            bool ans = obj.Update(empbal);
+            bool ans = obj.UpdateEmployeeDetails(empbal);
             if (ans)
             {
                 return Request.CreateResponse(HttpStatusCode.OK);
@@ -113,7 +113,7 @@ namespace Project.Controllers
         }
 
         // DELETE api/<controller>/5
-        public HttpResponseMessage DeleteProduct(int id)
+        public HttpResponseMessage DeleteEmpDetails(int id)
         {
             bool ans = obj.DeleteEmployeeDetails(id);
             if (ans)

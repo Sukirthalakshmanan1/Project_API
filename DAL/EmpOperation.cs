@@ -77,7 +77,7 @@ namespace DAL
 
         }
 
-        public bool Update(BLClass1 bal)
+        public bool UpdateEmployeeDetails(BLClass1 bal)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace DAL
         }
 
        
-        public List<BLClass1> GetAll()
+        public List<BLClass1> GetAllEmployeeDetails()
         {
             MyContext1 context = new MyContext1();
 
