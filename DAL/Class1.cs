@@ -52,7 +52,7 @@ namespace DAL
 
 
 
-    public class EmpDBInitializer : DropCreateDatabaseAlways<MyContext1>
+    public class EmpDBInitializer : DropCreateDatabaseIfModelChanges<MyContext1>
     {
         protected override void Seed(MyContext1 context)
         {
